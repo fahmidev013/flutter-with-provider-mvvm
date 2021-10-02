@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:qms/components/post/PostView.dart';
 import 'package:qms/model/PushNotification.dart';
 import 'package:qms/notifiers/PostsNotifier.dart';
+import 'package:qms/screens/TestPage.dart';
 import 'package:qms/services/ApiService.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -31,8 +32,8 @@ class _MyHomePageState extends State<HomeScreen> {
       }
     });
     FirebaseMessaging.onMessageOpenedApp.listen((event) {
-      final route = event.data['route'];
-      Navigator.of(context).pushNamed(route);
+      // final route = event.data['route'];
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => TestPage() ));
 
     });
   }
