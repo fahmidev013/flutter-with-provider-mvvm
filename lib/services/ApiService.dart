@@ -11,7 +11,7 @@ class ApiService {
 
   static getPosts(PostsNotifier postNotifier) async {
     List<Post> postList = [];
-    http.get(API_ENDPOINT).then((response) {
+    http.get(Uri.parse(API_ENDPOINT)).then((response) {
       print('Response status: ${response.statusCode}');
       if (response.statusCode == 200) {
         print('Response body: ${response.body}');
@@ -29,7 +29,7 @@ class ApiService {
   static Future<bool> addPost(Post post,PostsNotifier postNotifier) async{
     print("addPost");
     bool result = false;
-    await http.post(API_ENDPOINT,headers: {
+    await http.post(Uri.parse(API_ENDPOINT),headers: {
       "Content-type": "application/json; charset=UTF-8"
     },body: json.encode(post.toMap())).then((response){
 
